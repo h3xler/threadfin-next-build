@@ -24,7 +24,7 @@ ARG TARGETARCH
 ARG UPSTREAM_REPO
 ARG UPSTREAM_REF
 RUN apt-get update \
- && apt-get install -y --no-install-recommends git ca-certificates \
+ && apt-get install -y --no-install-recommends git ca-certificates file \
  && rm -rf /var/lib/apt/lists/*
 WORKDIR /src
 RUN git clone "https://github.com/${UPSTREAM_REPO}.git" . \
