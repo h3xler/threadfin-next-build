@@ -32,7 +32,7 @@ RUN git clone "https://github.com/${UPSTREAM_REPO}.git" . \
  && git log -1 --format='%H %ad %s' --date=short
 # Upstream'in kendi build komutu (README: "go build threadfin.go")
 RUN GOOS=linux GOARCH=${TARGETARCH} CGO_ENABLED=0 \
-    go build -trimpath -ldflags="-s -w" -o /out/threadfin threadfin.go
+    go build -mod=mod -trimpath -ldflags="-s -w" -o /out/threadfin threadfin.go
 # Mimari doğrulama: arm64 beklenir
 RUN file /out/threadfin | grep -i "aarch64\|arm64"
 
